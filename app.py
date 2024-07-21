@@ -1,8 +1,6 @@
 import os
 
 import streamlit as st 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAdUt9fcZ8Fd65Xgn0rpVr_lxcY8g51_2k"
-os.environ["GOOGLE_CSE_ID"] = "c671baa2a08f7456b"
 from dotenv import load_dotenv
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage
@@ -26,7 +24,7 @@ def create_agent_chain():
         
         memory = ConversationBufferMemory(memory_key="memory", return_messages=True)
         
-        tools = load_tools(["google-search", "wikipedia"])
+        tools = load_tools(["ddg-search", "wikipedia"])
         return initialize_agent(
             tools, 
             chat, 
